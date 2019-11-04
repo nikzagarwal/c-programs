@@ -14,7 +14,7 @@ public:
 };
 class B
 {
-	
+
 public:
 	int b;
 	void setvalue(int i)
@@ -29,19 +29,21 @@ void swap(A &x,B &y)
 	int temp=x.a;
 	x.a=y.b;
 	y.b=temp;
-	cout<<"a= "<<x.a<<endl;
-	cout<<"b= "<<y.b<<endl;
+
 }
 
 
-void main()
+int main()
 {
 	A a;
 	B b;
 	a.setvalue(10);
 	b.setvalue(20);
+	cout<<"a= "<<a.a<<endl;
+	cout<<"b= "<<b.b<<endl;
 	swap(a,b);
 	cout<<"a= "<<a.a<<endl;
 	cout<<"b= "<<b.b<<endl;
 	getch();
+	return 0 ;
 }

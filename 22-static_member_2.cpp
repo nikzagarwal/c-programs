@@ -5,7 +5,7 @@ class test
 	static int count;
 	int code;
 public:
-	
+
 	void setcode(void)
 	{
 		code=++count;
@@ -13,14 +13,14 @@ public:
 	void showcode(void)
 	{
 		cout<<"code="<<code<<endl;
-	}	
+	}
 	static void showcount(void)
 	{
 		cout<<"count="<<count<<endl;
 	}
 };
 int test::count;
-void main()
+int main()
 {
 	test a,b;
 	a.setcode();
@@ -33,6 +33,6 @@ void main()
 	b.showcode();
 	c.showcode();
 
-
+return 0;
 
 }
