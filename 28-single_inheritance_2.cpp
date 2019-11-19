@@ -1,4 +1,4 @@
-//deriving publicly
+//deriving privately
 #include<iostream>
 #include<conio.h>
 #include<stdio.h>
