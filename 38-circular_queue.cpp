@@ -5,36 +5,48 @@ using namespace std;
 class queue
 {
 private:
-	int i,s[10],top,bottom;
+	int i,s[10],f,r,count;
 public:
 	int item;
 	queue()
 	{
-		top=-1;
-		bottom=0;
+	    r=-1;
+        f=0;
+		count=0;
 	}
 	void push()
 		{
-			if(top==size-1)
+			if(count==size)
 				cout<<"queue full \n";
 			else
-				s[++top]=item;
+            {
+                 r=(r+1)%size;
+				s[r]=item;
+				count++;
+            }
 		}
 	void pop()
 	{
-		if(bottom>top)
+		if(count==0)
 			cout<<"queue empty \n";
 		else
-			bottom++;
+        {
+            f=(f+1)%size;
+			count--;
+        }
 	}
 	void display()
 	{
-		if(bottom>top)
-			cout<<"empty \n";
+		if(count==0)
+			cout<<"queue empty \n";
 		else
 		{
-			for(i=bottom;i<=top;i++)
-				cout<<s[i]<< endl;
+		    int j=f;
+			for(i=1;i<=count;i++)
+            {
+                cout<<s[j]<< endl;
+				j=(j+1)%size;
+            }
 		}
 	}
 };

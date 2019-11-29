@@ -1,3 +1,4 @@
+//priority queue
 #include<iostream>
 #include<stdlib.h>
 #define size 5
@@ -7,7 +8,7 @@ class queue
 private:
 	int i,s[10],top,bottom;
 public:
-	int item;
+	int item,j;
 	queue()
 	{
 		top=-1;
@@ -18,7 +19,16 @@ public:
 			if(top==size-1)
 				cout<<"queue full \n";
 			else
-				s[++top]=item;
+            {
+                j=top;
+                while(j>=0&&item<s[j])
+                {
+                    s[j+1]=s[j];
+                    j--;
+                }
+                s[j+1]=item;
+                top++;
+            }
 		}
 	void pop()
 	{

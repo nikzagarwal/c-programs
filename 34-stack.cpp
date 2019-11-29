@@ -1,4 +1,5 @@
 #include<iostream>
+#include<stdlib.h>
 #define stack_size 5
 using namespace std;
 class stack
@@ -22,7 +23,7 @@ public:
 	{
 		if(top==-1)
 			cout<<"stack empty \n";
-		else 
+		else
 			top--;
 	}
 	void display()
@@ -60,4 +61,5 @@ int main()
 		default:exit(0);
 		}
 	}
+	return 0;
 }

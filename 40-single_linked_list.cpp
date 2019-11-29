@@ -1,4 +1,4 @@
-
+//single link list
 #include<iostream>
 #include<stdio.h>
 #include<conio.h>
@@ -28,7 +28,8 @@ public:
       if(first==NULL)
       {
         first=temp;
-        temp=NULL;
+        delete temp;
+        return;
       }
       else
       {
@@ -38,31 +39,30 @@ public:
 
     void delete_front()
     {
-         node *temp=new node;
         if(first==NULL)
         {
             cout<<"empty list\n";
             return;
         }
-        temp=first;
         first=first->link;
-        delete(temp);
     }
 
     void insert_rear()
     {
          node *temp=new node;
-          node *last=new node;
+          node *cur=new node;
         temp->info=item;
         temp->link=NULL;
         if(first==NULL)
         {
             first=temp;
+            delete temp;
+            return;
         }
-        last=first;
-        while(last->link!=NULL)
-            last=last->link;
-        last->link=temp;
+        cur=first;
+        while(cur->link!=NULL)
+            cur=cur->link;
+        cur->link=temp;
     }
 
     void delete_rear()
@@ -85,6 +85,31 @@ public:
         delete cur;
     }
 
+    void search_delete()
+    {
+        node *prev=new node;
+        node *cur=new node;
+        prev=NULL;
+        cur=first;
+        while(cur!=NULL)
+        {
+            if(cur->info==item)
+            {
+                cout<<"found and deleted"<<endl;
+                if(cur==first)
+                {
+                    first=first->link;
+                    return;
+                }
+                prev->link=cur->link;
+                return;
+            }
+            prev=cur;
+            cur=cur->link;
+        }
+        cout<<"not found";
+    }
+
     void display()
     {
         node *temp=new node;
@@ -104,7 +129,7 @@ int main()
     list obj;
     for(;;)
     {
-        cout<<"1:insert front \n2:insert rear \n3:delete front \n4:delete rear \n5:display \n6.:exit\n";
+        cout<<"1:insert front \n2:insert rear \n3:delete front \n4:delete rear \n5:display \n6:search and delete \n7.:exit\n";
         cout<<"enter choice\n";
         cin>>choice;
         switch(choice)
@@ -127,6 +152,11 @@ int main()
             break;
         case 5:
             obj.display();
+            break;
+        case 6:
+            cout<<"enter item\n";
+            cin>>obj.item;
+            obj.search_delete();
             break;
         default:
             exit(0);
