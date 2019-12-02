@@ -1,4 +1,5 @@
-//circular link list
+
+//doubly circular link list
 #include<iostream>
 #include<stdio.h>
 #include<conio.h>
@@ -7,70 +8,84 @@ using namespace std;
 struct node
 {
     int info;
-    node *link;
+    node *llink,*rlink;
 };
 
 class list
 {
 public:
-    node *last;
+    node *first;
     int item;
     list()
     {
-        last=NULL;
+        first=NULL;
     }
 
     void insert_front()
     {
         node *temp=new node;
         temp->info=item;
-        temp->link=temp;
-        if(last==NULL)
+        temp->rlink=temp;
+        temp->llink=temp;
+        if(first==NULL)
         {
-            last=temp;
-            delete temp;
+            first=temp;
         }
+
         else
         {
-            temp->link=last->link;
-            last->link=temp;
+            node *last=new node;
+            last=first->llink;
+            temp->llink=last;
+            temp->rlink=first;
+            first->llink=temp;
+            last->rlink=temp;
+            first=temp;
         }
+
     }
 
     void insert_rear()
     {
         node *temp=new node;
         temp->info=item;
-        temp->link=temp;
-        if(last==NULL)
+        temp->llink=temp;
+        temp->rlink=temp;
+        if(first==NULL)
         {
-            last=temp;
-            delete temp;
-            return;
+            first=temp;
         }
         else
         {
-            temp->link=last->link;
-            last->link=temp;
-            last=last->link;
+            node *last=new node;
+            last=first->llink;
+            temp->llink=last;
+            temp->rlink=first;
+            first->llink=temp;
+            last->rlink=temp;
         }
     }
 
     void delete_front()
     {
-        if(last==NULL)
+        if(first==NULL)
         {
             cout<<"empty list\n";
             return;
         }
-        if(last->link==last)
+         if(first->rlink==first)
         {
-            last=NULL;
+            first=NULL;
             return;
         }
         node *temp=new node;
-        temp=last->link;
-        last->link=temp->link;
+        temp=first;
+        node *last=new node;
+        last=first->llink;
+        first=first->rlink;
+        first->llink=last;
+        last->rlink=first;
+        delete temp;
     }
 
 
@@ -78,53 +93,57 @@ public:
     {
         node *prev=new node;
         node *cur=new node;
-        if(last==NULL)
+        if(first==NULL)
         {
             cout<<"empty list\n";
             return;
         }
-        if(last->link==last)
+         if(first->rlink==first)
         {
-            last=NULL;
+            first=NULL;
             return;
         }
-        cur=last->link;
-        prev=last;
-        while(cur!=last)
-        {
-            prev=cur;
-            cur=cur->link;
-        }
-        prev->link=cur->link;
+        cur=first->llink;
+        prev=cur->llink;
+        prev->rlink=cur->rlink;
+        first->llink=prev;
         delete cur;
-        last=prev;
     }
 
     void search_delete()
     {
         node *prev=new node;
         node *cur=new node;
-        cur=last->link;
-        prev=last;
-        while(cur!=NULL)
+        cur=first;
+        prev=NULL;
+        if(cur->rlink==first&&cur->info==item)
+        {
+            cout<<"found and deleted"<<endl;
+            first=NULL;
+            return;
+        }
+        while(cur->rlink!=first)
         {
             if(cur->info==item)
             {
                 cout<<"found and deleted"<<endl;
-                if(cur==last->link)
+                if(cur==first)
                 {
-                    if(cur->link==last)
-                       {last=NULL;
-                        return;
-                       }
-                    last->link=cur->link;
+                    node *last=new node;
+                    last=first->llink;
+                    first=first->rlink;
+                    first->llink=last;
+                    last->rlink=first;
                     return;
                 }
-                prev->link=cur->link;
+                node *temp=new node;
+                temp=cur->rlink;
+                prev->rlink=temp;
+                temp->llink=prev;
                 return;
             }
             prev=cur;
-            cur=cur->link;
+            cur=cur->rlink;
         }
         cout<<"not found";
     }
@@ -132,17 +151,16 @@ public:
     void display()
     {
         node *temp=new node;
-        temp=last;
+        temp=first;
         if(temp==NULL)
         {
             cout<<"Empty list\n";
             return;
         }
-        temp=temp->link;
-        while(temp->link!=last->link)
+        while(temp->rlink!=first)
         {
             cout<<temp->info<<endl;
-            temp=temp->link;
+            temp=temp->rlink;
         }
         cout<<temp->info<<endl;
     }
@@ -177,11 +195,11 @@ int main()
         case 5:
             obj.display();
             break;
-        case 6:
-            cout<<"enter item\n";
-            cin>>obj.item;
-            obj.search_delete();
-            break;
+         case 6:
+         cout<<"enter item\n";
+          cin>>obj.item;
+          obj.search_delete();
+          break;
         default:
             exit(0);
         }
