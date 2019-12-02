@@ -24,17 +24,35 @@ public:
     {
        node *temp=new node;
       temp->info=item;
-      temp->link=NULL;
+      temp->link=temp;
       if(last==NULL)
       {
         last=temp;
         delete temp;
-        return;
       }
       else
       {
       temp->link=last->link;
           last->link=temp;
+      }
+    }
+
+    void insert_rear()
+    {
+         node *temp=new node;
+          temp->info=item;
+        temp->link=temp;
+        if(last==NULL)
+        {
+            last=temp;
+            delete temp;
+            return;
+        }
+        else
+      {
+      temp->link=last->link;
+          last->link=temp;
+        last=last->link;
       }
     }
 
@@ -50,21 +68,6 @@ public:
         last->link=temp->link;
     }
 
-    void insert_rear()
-    {
-         node *temp=new node;
-          temp->info=item;
-        temp->link=NULL;
-        if(last==NULL)
-        {
-            last=temp;
-            delete temp;
-            return;
-        }
-        temp->link=last->link;
-        last->link=temp;
-        last=temp;
-    }
 
     void delete_rear()
     {
@@ -122,12 +125,17 @@ public:
         node *temp=new node;
     temp=last;
     if(temp==NULL)
+    {
         cout<<"Empty list";
-    while(temp!=NULL)
+   return;
+    }
+   temp=temp->link;
+    while(temp->link!=last->link)
     {
       cout<<temp->info<<endl;
       temp=temp->link;
         }
+        cout<<temp->info<<endl;
     }
 };
 int main()
