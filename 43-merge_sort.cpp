@@ -5,34 +5,31 @@ using namespace std;
 class merge
 {
 public:
-	int key,n,mid;
+	int n;
 	int ar[100];
-	merge()
-	{
-		key=0;
-	}
 
 	void simplemerge(int ar[],int low,int mid,int high)
 	{
-		int i,j,l[20];
-		key=low;
+		int i,j,k,c[20];
+		k=low;
 		i=low;
 		j=mid+1;
 		while(i<=mid&&j<=high)
-		{	if(ar[j]<ar[i])
-				l[key++]=ar[i++];
+		{	if(ar[i]<ar[j])
+				c[k++]=ar[i++];
 			else
-				l[key++]=ar[j++];
+				c[k++]=ar[j++];
 		}
 	while(i<=mid)
-		l[key++]=ar[i++];
+		c[k++]=ar[i++];
 	while(j<=high)
-		l[key++]=ar[j++];
-	for(i=low;i<=key-1;i++)
-		ar[i]=l[i];
+		c[k++]=ar[j++];
+	for(i=low;i<=k-1;i++)
+		ar[i]=c[i];
 	}
 	void sort(int a[],int low, int high)
 		{
+			int mid;
 			if(low<high)
 			{
 				mid=(low+high)/2;
@@ -67,4 +64,3 @@ int main()
 	getch();
 	return 0;
 }
-
