@@ -7,7 +7,7 @@ class item
 	float cost;//private by default
  public:
 	 void getdata(int,float);
-	 void putdata(void);
+	 void putdata();
 };
 void item::getdata(int a,float b)
 {
@@ -19,7 +19,7 @@ void item::putdata(void)
 	cout<<"number = "<<number<<endl;
 	cout<<"cost = "<<cost<<"\n";
 }
-void main()
+int main()
 {
 	item x,y;
 	cout<<"object x"<<endl;
@@ -29,4 +29,5 @@ void main()
 	y.getdata(10,29.6);
 	y.putdata();
 	getch();
+	return 0;
 }

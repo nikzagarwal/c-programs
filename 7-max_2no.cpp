@@ -2,7 +2,7 @@
 #include<conio.h>
 using namespace std;
 int max(int,int);
-void main()
+int main()
 {
 	int a,b;
 	cout<<"Enter two elements"<<endl;
@@ -10,6 +10,7 @@ void main()
 	int res=max(a,b);
 	cout<<"Maximum no. = "<<res;
 	getch();
+    return 0;
 }
 int max(int a, int b)
 {
@@ -17,5 +18,5 @@ int max(int a, int b)
 		return a;
 	return b;
 }
-	
-	
+
+

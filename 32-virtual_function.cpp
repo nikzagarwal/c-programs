@@ -33,12 +33,16 @@ public:
 	 B b;
 	 D d;
 	 B *bptr;
+	 D *dptr;
 	 bptr=&b;
 	 bptr->display();
 	 bptr->show();
 	 bptr=&d;
 	 bptr->display();
 	 bptr->show();
+	dptr=&d;
+	  dptr->display();
+	 dptr->show();
 	 getch();
 	 return 0;
  }

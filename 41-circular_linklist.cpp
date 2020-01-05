@@ -106,27 +106,31 @@ public:
         node *cur=new node;
         cur=last->link;
         prev=last;
-        while(cur!=NULL)
+        while(cur!=last)
         {
             if(cur->info==item)
             {
                 cout<<"found and deleted"<<endl;
-                if(cur==last->link)
-                {
-                    if(cur->link==last)
-                       {last=NULL;
-                        return;
-                       }
-                    last->link=cur->link;
-                    return;
-                }
                 prev->link=cur->link;
                 return;
             }
             prev=cur;
             cur=cur->link;
         }
-        cout<<"not found";
+        if(cur==last)
+        {
+            if(cur->info==item)
+            {
+                cout<<"found and deleted"<<endl;
+                if(cur->link==last)
+                       {last=NULL;
+                        return;
+                       }
+                prev->link=cur->link;
+                return;
+            }
+        }
+        cout<<"not found\n";
     }
 
     void display()

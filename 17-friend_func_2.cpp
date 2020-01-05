@@ -10,7 +10,7 @@ public:
 	{
 		a=i;
 	}
-	friend void swap(int &,int &);
+	friend void swap(A &,B &);
 };
 class B
 {
@@ -21,7 +21,7 @@ public:
 	{
 		b=i;
 	}
-	friend void swap(int &,int &);
+	friend void swap(A &,B &);
 };
 
 void swap(A &x,B &y)

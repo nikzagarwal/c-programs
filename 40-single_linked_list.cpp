@@ -28,7 +28,6 @@ public:
       if(first==NULL)
       {
         first=temp;
-        delete temp;
         return;
       }
       else

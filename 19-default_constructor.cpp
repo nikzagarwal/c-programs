@@ -17,7 +17,7 @@ public:
 		count++;
 	}
 };
-void main()
+int main()
 {
 	counter c1,c2;
 	c1.getcount();
@@ -27,4 +27,5 @@ void main()
 	c1.getcount();
 	c2.getcount();
 	//getch();
+	return 0;
 }

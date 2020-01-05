@@ -116,6 +116,11 @@ public:
         node *cur=new node;
         cur=first;
         prev=NULL;
+        if(cur==NULL)
+        {
+            cout<<"empty list";
+            return;
+        }
         if(cur->rlink==first&&cur->info==item)
         {
             cout<<"found and deleted"<<endl;

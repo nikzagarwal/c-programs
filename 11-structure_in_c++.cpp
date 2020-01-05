@@ -9,11 +9,14 @@ struct student
 	 int marks;
  };
 
-void main()
+int main()
 {
-	student a={"nikhil",1,99};
+    string n;
+    cin>>n;
+	student a={n,1,99};
 	cout<<"name = "<<a.name<<endl;
 	cout<<"roll = "<<a.roll<<endl;
 	cout<<"marks = "<<a.marks<<endl;
 	getch();
+	return 0;
 }

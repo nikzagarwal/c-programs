@@ -5,7 +5,7 @@ class item
 	static int count;
 	int number;
 public:
-	
+
 	void getdata(int a)
 	{
 		number =a;
@@ -14,10 +14,10 @@ public:
 	void getcount()
 	{
 		cout<<"count="<<count<<endl;
-	}	
+	}
 };
 int item::count;
-void main()
+int main()
 {
 	item a,b,c;
 	a.getcount();
@@ -29,6 +29,6 @@ void main()
 	a.getcount();
 	b.getcount();
 	c.getcount();
-
+    return 0;
 
 }
