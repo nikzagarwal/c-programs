@@ -27,15 +27,15 @@ int main()
     while(k<n)//loop for total no. of vertex
     {
         for(j=n; j>=1; j--)
-            if(cost[v][j]!=0&&visited[j]!=1)//&&visit[j]!=1)
+            if(cost[v][j]!=0&&visited[j]!=1)&&visit[j]!=1)
             {
-               // visit[j]=1;
+                visit[j]=1;
                 stk[top++]=j;
             }
         v=stk[--top];
         cout<<v<<" ";
         k++;
-       // visit[v]=0;
+       visit[v]=0;
         visited[v]=1;
     }
     return 0;

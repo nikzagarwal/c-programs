@@ -8,12 +8,12 @@ struct student
 	 int roll;
 	 int marks;
  };
-
+typedef student stu;
 int main()
 {
     string n;
     cin>>n;
-	student a={n,1,99};
+	stu a={n,1,99};
 	cout<<"name = "<<a.name<<endl;
 	cout<<"roll = "<<a.roll<<endl;
 	cout<<"marks = "<<a.marks<<endl;

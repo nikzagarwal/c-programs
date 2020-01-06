@@ -52,5 +52,5 @@ int main()
 	cout<<obj.result;
 	getch();
 	return 0;
-	
+
 }
